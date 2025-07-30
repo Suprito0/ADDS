@@ -5,5 +5,5 @@ Computer::Computer(){
 }
 
 char Computer::makeMove(){
-    return 'r';
+    return 'R';
 }
