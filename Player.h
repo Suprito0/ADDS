@@ -5,9 +5,8 @@
 using namespace std;
 
 class Player{
-    private:
-        string name;
     public:
+        string name;
         virtual char makeMove() = 0;
         string getName();
 };

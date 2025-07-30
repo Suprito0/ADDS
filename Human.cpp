@@ -1,5 +1,8 @@
 #include "Human.h"
 
+Human::Human(){
+    this->name = "Player";
+}
 char Human::makeMove(){
     while(true){
         char move;
