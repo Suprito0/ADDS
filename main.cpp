@@ -6,8 +6,8 @@ int main(){
     Referee ref;
     Player* winner = ref.refGame(player1, player2);
     if (winner){
-        cout << winner->getName() << " wins" << endl;
+        cout << winner->getName() << endl;
     } else{
-        cout << "it's a tie" << endl;
+        cout << "Tie" << endl;
     }
 }
