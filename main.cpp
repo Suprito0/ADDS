@@ -10,4 +10,7 @@ int main(){
     } else{
         cout << "Tie" << endl;
     }
+    delete player1;
+    delete player2;
+    delete winner;
 }
