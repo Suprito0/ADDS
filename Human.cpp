@@ -1,7 +1,7 @@
 #include "Human.h"
 
 Human::Human(){
-    this->name = "Player";
+    this->name = "Human";
 }
 char Human::makeMove(){
     char move;
