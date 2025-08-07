@@ -1,5 +1,13 @@
 #include "Human.h"
 #include "Move.h"
+#include "Rock.h"
+#include "Paper.h"
+#include "Scissors.h"
+#include "Robot.h"
+#include "Monkey.h"
+#include "Pirate.h"
+#include "Ninja.h"
+#include "Zombie.h"
 
 Human::Human(){
     this->name = "Human";
