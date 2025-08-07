@@ -5,6 +5,10 @@ Human::Human(){
     this->name = "Human";
 }
 
+Human::Human(string name){
+    this->name = name;
+}
+
 Move* Human::makeMove(){
     string move;
     // cout << this->getName() << ", make your move." << endl;

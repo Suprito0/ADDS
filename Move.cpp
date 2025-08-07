@@ -1,6 +1,6 @@
 #include"Move.h"
 
-string Move::getMoveName(){
+string Move::getName(){
     return this->moveName;
 }
 vector<string> Move::getCanDefeat(){

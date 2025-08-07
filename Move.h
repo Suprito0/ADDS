@@ -10,7 +10,7 @@ class Move{
         vector<string> canDefeat;
         string moveName;
     public:
-        string getMoveName();
+        string getName();
         vector<string> getCanDefeat();
 };
 
