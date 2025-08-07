@@ -1,47 +1,93 @@
+#ifndef MOVE_H
+#define MOVE_H
+
 #include<iostream>
 using namespace std;
+#include<vector>
 
 class Move{
+    protected:
+        vector<string> canDefeat;
+        string moveName;
     public:
-        virtual string get_moveName() = 0;
+        string getMoveName();
+        vector<string> getCanDefeat();
 };
 
 class Rock: public Move{
     public:
-        string get_moveName();
+        Rock(){
+            this->moveName = "Rock";
+            canDefeat.push_back("Scissors");
+        }
+        
 };
 
 class Paper: public Move{
     public:
-        string get_moveName();
+        Paper(){
+            this->moveName = "Paper";
+            canDefeat.push_back("Rock");
+        }
+        
 };
 
 class Scissors: public Move{
     public:
-        string get_moveName();
+        Scissors(){
+            this->moveName = "Scissors";
+            canDefeat.push_back("Paper");
+        }
+        
 };
 
 class Robot: public Move{
     public:
-        string get_moveName();
+        Robot(){
+            this->moveName = "Robot";
+            canDefeat.push_back("Zombie");
+            canDefeat.push_back("Ninja");
+        }
+        
 };
 
 class Monkey: public Move{
     public:
-        string get_moveName();
+        Monkey(){
+            this->moveName = "Monkey";
+            canDefeat.push_back("Robot");
+            canDefeat.push_back("Ninja");
+        }
+        
 };
 
 class Pirate: public Move{
     public:
-        string get_moveName();
+        Pirate(){
+            this->moveName = "Pirate";
+            canDefeat.push_back("Robot");
+            canDefeat.push_back("Monkey");   
+        }
+        
 };
 
 class Ninja: public Move{
     public:
-        string get_moveName();
+        Ninja(){
+            this->moveName = "Ninja";
+            canDefeat.push_back("Pirate");
+            canDefeat.push_back("Zombie"); 
+        }
+        
 };
 
 class Zombie: public Move{
     public:
-        string get_moveName();
+        Zombie(){
+            this->moveName = "Zombie";
+            canDefeat.push_back("Pirate");
+            canDefeat.push_back("Monkey"); 
+        }
+        
 };
+#endif // MOVE_H
