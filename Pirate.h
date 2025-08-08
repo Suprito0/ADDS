@@ -6,6 +6,7 @@
 class Pirate : public Move{
     public:
         Pirate();
+        string getName();
 };
 
 #endif // PIRATE_H

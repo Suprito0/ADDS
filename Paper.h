@@ -6,6 +6,7 @@
 class Paper : public Move{
     public:
         Paper();
+        string getName();
 };
 
 #endif // PAPER_H

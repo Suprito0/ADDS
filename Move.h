@@ -10,7 +10,9 @@ class Move{
         vector<string> canDefeat;
         string moveName;
     public:
-        string getName();
+
+        virtual string getName() = 0;
         vector<string> getCanDefeat();
 };
+
 #endif // MOVE_H

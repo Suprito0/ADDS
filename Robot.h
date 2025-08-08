@@ -6,6 +6,7 @@
 class Robot : public Move{
     public:
         Robot();
+        string getName();
 };
 
 #endif // ROBOT_H

@@ -6,6 +6,7 @@
 class Scissors : public Move{
     public:
         Scissors();
+        string getName();
 };
 
 #endif // SCISSORS_H

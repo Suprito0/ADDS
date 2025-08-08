@@ -6,6 +6,7 @@
 class Rock : public Move{
     public:
         Rock();
+        string getName();
 };
 
 #endif // ROCK_H

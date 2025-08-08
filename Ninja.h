@@ -6,6 +6,7 @@
 class Ninja : public Move{
     public:
         Ninja();
+        string getName();
 };
 
 #endif // NINJA_H

@@ -6,6 +6,7 @@
 class Zombie : public Move{
     public:
         Zombie();
+        string getName();
 };
 
 #endif // ZOMBIE_H

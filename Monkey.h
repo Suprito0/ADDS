@@ -6,6 +6,7 @@
 class Monkey : public Move{
     public:
         Monkey();
+        string getName();
 };
 
 #endif // MONKEY_H
