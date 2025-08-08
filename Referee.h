@@ -3,6 +3,7 @@
 
 #include "Human.h"
 #include "Computer.h"
+#include "Move.h"
 
 class Referee{
     public:
