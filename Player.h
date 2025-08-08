@@ -1,9 +1,9 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include"Move.h"
 #include<iostream>
 using namespace std;
+class Move;
 
 class Player{
     public:

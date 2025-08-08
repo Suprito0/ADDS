@@ -1,4 +1,5 @@
 #include"Move.h"
+#include"Player.h"
 
 vector<string> Move::getCanDefeat(){
     return this->canDefeat;

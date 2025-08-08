@@ -1,10 +1,11 @@
 #ifndef MOVE_H
 #define MOVE_H
 
-#include"Player.h"
 #include<iostream>
 using namespace std;
 #include<vector>
+
+class Player;
 
 class Move{
     protected:
