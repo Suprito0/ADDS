@@ -6,8 +6,6 @@
 using namespace std;
 
 class Truckloads{
-    private:
-        vector<int> piles;
     public:
         static int numTrucks(int numCrates, int loadSize);
 };
