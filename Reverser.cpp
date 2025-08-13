@@ -12,7 +12,11 @@ int Reverser::reverseDigit(int value){
 }
 
 string Reverser::reverseString(string characters){
-    if (sizeof(characters) == 1) {
+    int length = characters.length();
+    if (length == 1) {
         return characters;
+    } else {
+        return characters[length - 1] + reverseString(characters.substr(0, length - 1));
+        
     }
 }
