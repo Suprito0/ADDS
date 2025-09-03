@@ -7,7 +7,7 @@ using namespace std;
 
 class Sort{
     public:
-        static vector<int> sort(vector<int> list);
+        virtual vector<int> sort(vector<int> list) = 0;
 };
 
 #endif
