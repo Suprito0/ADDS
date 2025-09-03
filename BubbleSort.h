@@ -5,7 +5,7 @@
 
 class BubbleSort : public Sort{
     public:
-        vector<int> sort(vector<int> list);
+        static vector<int> sort(vector<int> list);
 };
 
 #endif

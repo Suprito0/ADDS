@@ -12,4 +12,5 @@ vector<int> BubbleSort::sort(vector<int> list){
             }
         }
     }
+    return list;
 }
