@@ -11,7 +11,7 @@ vector<int> QuickSort::sort(vector<int> list) {
         return list;
     }
 
-    int pivot = list[2];  // could be any index, e.g., list[0] or random
+    int pivot = list[2];
 
     vector<int> small, equal, large;
 
@@ -21,7 +21,7 @@ vector<int> QuickSort::sort(vector<int> list) {
         } else if (num > pivot) {
             large.push_back(num);
         } else {
-            equal.push_back(num); // includes pivot and duplicates
+            equal.push_back(num);
         }
     }
 
