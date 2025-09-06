@@ -4,24 +4,24 @@
 vector<int> QuickSort::sort(vector<int> list) {
     if (list.size() <= 1) {
         return list;
-    } else if (list.size() == 2){
-        if (list[0] > list[1]){
+    } else if (list.size() == 2) {
+        if (list[0] > list[1]) {
             swap(list[0], list[1]);
         }
         return list;
     }
 
-    int pivot = list[2];
+    int pivotIndex = 2;
+    int pivot = list[pivotIndex];
 
-    vector<int> small, equal, large;
+    vector<int> small, large;
 
-    for (int num : list) {
-        if (num < pivot) {
-            small.push_back(num);
-        } else if (num > pivot) {
-            large.push_back(num);
+    for (int i = 0; i < list.size(); i++) {
+        if (i == pivotIndex) continue;
+        if (list[i] < pivot) {
+            small.push_back(list[i]);
         } else {
-            equal.push_back(num);
+            large.push_back(list[i]);
         }
     }
 
@@ -30,7 +30,7 @@ vector<int> QuickSort::sort(vector<int> list) {
 
     vector<int> result;
     result.insert(result.end(), sortedSmall.begin(), sortedSmall.end());
-    result.insert(result.end(), equal.begin(), equal.end());
+    result.push_back(pivot);
     result.insert(result.end(), sortedLarge.begin(), sortedLarge.end());
 
     return result;
