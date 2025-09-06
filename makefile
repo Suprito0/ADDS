@@ -1,8 +1,8 @@
 git:
-	git add .
-	git commit -m "prac"
+	git add Finder.cpp Finder.h
+	git commit -m "prac4"
 	git push
 
 run:
-	g++ Computer.cpp Move.cpp Player.cpp Human.cpp Referee.cpp Paper.cpp Pirate.cpp Robot.cpp Rock.cpp Scissors.cpp Zombie.cpp Monkey.cpp Ninja.cpp factory.cpp main.cpp -o game
+	g++ Finder.cpp main.cpp -o game
 	./game
