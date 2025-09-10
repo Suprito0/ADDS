@@ -1,5 +1,6 @@
 #include"BigNumCalc.h"
 
+BigNumCalc::BigNumCalc(){}
 list<int> BigNumCalc::buildBigNum(std::string numString){
     list<int> list;
     for(char c : numString){
