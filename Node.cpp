@@ -5,6 +5,18 @@ Node::Node(int data, Node* link){
     this->link = link;
 }
 
-void Node::inPtr(Node* link){
+Node* Node::getLink(){
+    return this->link;
+}
+
+int Node::getData(){
+    return this->data;
+}
+
+void Node::setLink(Node* link){
     this->link = link;
+}
+
+Node::~Node(){
+    delete this->link;
 }

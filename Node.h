@@ -10,7 +10,10 @@ class Node{
         Node* link;
     public:
         Node(int data, Node* link);
-        void inPtr(Node* link);
+        Node* getLink();
+        int getData();
+        void setLink(Node* link);
+        ~Node();
 };
 
 #endif
