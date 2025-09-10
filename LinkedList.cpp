@@ -3,10 +3,11 @@
 
 LinkedList::LinkedList(){
     this->head = nullptr;
+    this->len = 0;
 }
 LinkedList::LinkedList(int* array, int len){
     Node* ptr = nullptr;
-    for(int i=len -1; i>=1; i--){
+    for(int i=len -1; i>=0; i--){
         ptr = new Node(*(array + i), ptr);
     }
     this->head = ptr;
@@ -23,7 +24,7 @@ void LinkedList::insertPosition(int pos, int newNum){
     } else {
         this->getNode(pos-1)->setLink(new Node(newNum, this->getNode(pos)));
     }
-
+    this->len++;
 }
 bool LinkedList::deletePosition(int pos){
     if(pos>this->len || pos < 1) return false;
