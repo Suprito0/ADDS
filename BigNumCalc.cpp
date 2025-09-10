@@ -36,10 +36,10 @@ while (!num1.empty() || !num2.empty() || carry != 0){
     return sum;
 }
 list<int> BigNumCalc::sub(std::list<int> num1, std::list<int> num2){
-    list<int> sub;
-    int carry = 0;
-    int tempSub = 0;
-    
+    // list<int> sub;
+    // int carry = 0;
+    // int tempSub = 0;
+    return num1;
 }
 list<int> BigNumCalc::mul(std::list<int> num1, std::list<int> num2){
     list<int> product;
