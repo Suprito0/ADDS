@@ -18,5 +18,4 @@ void Node::setLink(Node* link){
 }
 
 Node::~Node(){
-    delete this->link;
 }
