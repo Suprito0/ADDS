@@ -11,6 +11,8 @@ class BigNumCalc{
         list<int> add(std::list<int> num1, std::list<int> num2);
         list<int> sub(std::list<int> num1, std::list<int> num2);
         list<int> mul(std::list<int> num1, std::list<int> num2);
+        bool firstGreater(list<int> num1, list<int> num2);
+        void clean(list<int>& num1);
         ~BigNumCalc();
 };
 
