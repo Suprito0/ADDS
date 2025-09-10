@@ -88,7 +88,8 @@ int LinkedList::search(int target)
     int pos = 1;
     while (link)
     {
-        if (link->getData() == target) return pos;
+        if (link->getData() == target)
+            return pos;
         link = link->getLink();
         pos++;
     }

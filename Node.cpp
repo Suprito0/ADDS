@@ -1,21 +1,26 @@
-#include"Node.h"
+#include "Node.h"
 
-Node::Node(int data, Node* link){
+Node::Node(int data, Node *link)
+{
     this->data = data;
     this->link = link;
 }
 
-Node* Node::getLink(){
+Node *Node::getLink()
+{
     return this->link;
 }
 
-int Node::getData(){
+int Node::getData()
+{
     return this->data;
 }
 
-void Node::setLink(Node* link){
+void Node::setLink(Node *link)
+{
     this->link = link;
 }
 
-Node::~Node(){
+Node::~Node()
+{
 }
