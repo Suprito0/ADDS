@@ -59,7 +59,7 @@ private:
         {
             if (this->tree.at(minValueChildIndex) < this->tree.at(index))
             {
-                std::cout << "Swap positions " << minValueChildIndex << "(" << this->tree.at(minValueChildIndex) << ") and" << index << "(" << this->tree.at(index) << ")." << std::endl;
+                std::cout << "Swap positions " << minValueChildIndex << "(" << this->tree.at(minValueChildIndex) << ") and " << index << "(" << this->tree.at(index) << ")." << std::endl;
                 std::swap(this->tree.at(minValueChildIndex), this->tree.at(index));
                 // Recursively fix the heap property
                 this->heapifyDown(minValueChildIndex);
@@ -174,12 +174,43 @@ public:
     // Insert an element into the heap
     void insert(T element)
     {
+        this->tree.push_back(element);
     }
 
     // TO BE IMPLEMENTED
     // Remove an element from the heap
     void remove(T value)
     {
+        if (this->isHeapEmpty())
+        {
+            // Return a minimum value if the heap is empty
+            return;
+        }
+        heapIndex ROOT_INDEX = 1;
+        while (ROOT_INDEX < this->tree.size()){
+            if (this->tree.at(ROOT_INDEX) == value){
+                break;
+            }
+            ROOT_INDEX++;
+        }
+        if(ROOT_INDEX == this->tree.size()){
+            return;
+        }
+
+        // Replace the root with the last element
+        T topElement = this->tree.at(ROOT_INDEX);
+        std::cout << "Removed element: " << topElement << std::endl;
+        std::cout << "Placing index: " << (this->tree.size() - 1) << "(" << this->tree.at(this->tree.size() - 1) << ") to the top" << std::endl;
+        this->tree.at(ROOT_INDEX) = this->tree.at(this->tree.size() - 1);
+        this->tree.pop_back();
+
+        std::cout << "Checking the if the heap condition is valid after popping out top of heap: " << topElement << std::endl;
+        // Restore the heap property by heapifying down from the root
+        heapIndex parent = ROOT_INDEX;
+        if(ROOT_INDEX < this->tree.size()){
+        this->heapifyDown(parent);
+        }
+        return;
     }
 
     // TO BE IMPLEMENTED
