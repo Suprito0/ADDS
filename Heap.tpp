@@ -207,6 +207,8 @@ public:
         // if(ROOT_INDEX < this->tree.size()){
         // this->heapifyDown(parent);
         // }
+        // return;
+        this->heapify(this->tree);
         return;
     }
 
