@@ -107,6 +107,10 @@ public:
         }
     }
 
+    void heapify(){
+        this->heapify(this->tree);
+    }
+
     // Helper function to print the contents of a vector
     void printVector(std::vector<T> numVector)
     {
@@ -202,7 +206,7 @@ public:
         this->tree.pop_back();
 
         // Restore the heap property by heapifying down from the root
-        heapIndex parent = ROOT_INDEX;
+        heapIndex parent = this->getParentPosition(ROOT_INDEX);
         if(ROOT_INDEX < this->tree.size()){
         this->heapifyDown(parent);
         }
@@ -213,6 +217,10 @@ public:
     // Get the minimum element (in this case, the maximum element of the max-heap)
     T getMin()
     {
+        if(this->isHeapEmpty()){
+            return std::numeric_limits<T>::min();
+        }
+        return this->tree.at(1);
     }
 };
 
