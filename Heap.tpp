@@ -202,11 +202,11 @@ public:
         this->tree.at(ROOT_INDEX) = this->tree.at(this->tree.size() - 1);
         this->tree.pop_back();
 
-        // Restore the heap property by heapifying down from the root
-        heapIndex parent = ROOT_INDEX;
-        if(ROOT_INDEX < this->tree.size()){
-        this->heapifyDown(parent);
-        }
+        // // Restore the heap property by heapifying down from the root
+        // heapIndex parent = ROOT_INDEX;
+        // if(ROOT_INDEX < this->tree.size()){
+        // this->heapifyDown(parent);
+        // }
         return;
     }
 
