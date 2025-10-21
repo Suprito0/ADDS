@@ -179,6 +179,7 @@ public:
     void insert(T element)
     {
         this->tree.push_back(element);
+        this->heapify(this->tree);
     }
 
     // TO BE IMPLEMENTED
@@ -207,6 +208,9 @@ public:
 
         // Restore the heap property by heapifying down from the root
         heapIndex parent = this->getParentPosition(indexToBeDeleted);
+        if(parent == 0){
+            parent++;
+        }
         if(indexToBeDeleted < this->tree.size()){
         this->heapifyDown(parent);
         }
