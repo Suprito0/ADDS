@@ -59,7 +59,7 @@ private:
         {
             if (this->tree.at(minValueChildIndex) < this->tree.at(index))
             {
-                // std::cout << "Swap positions " << minValueChildIndex << "(" << this->tree.at(minValueChildIndex) << ") and " << index << "(" << this->tree.at(index) << ")." << std::endl;
+                std::cout << "Swap positions " << minValueChildIndex << "(" << this->tree.at(minValueChildIndex) << ") and " << index << "(" << this->tree.at(index) << ")." << std::endl;
                 std::swap(this->tree.at(minValueChildIndex), this->tree.at(index));
                 // Recursively fix the heap property
                 this->heapifyDown(minValueChildIndex);
