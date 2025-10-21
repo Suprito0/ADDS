@@ -190,24 +190,24 @@ public:
             // Return a minimum value if the heap is empty
             return;
         }
-        heapIndex ROOT_INDEX = 1;
-        while (ROOT_INDEX < this->tree.size()){
-            if (this->tree.at(ROOT_INDEX) == value){
+        heapIndex indexToBeDeleted = 1;
+        while (indexToBeDeleted < this->tree.size()){
+            if (this->tree.at(indexToBeDeleted) == value){
                 break;
             }
-            ROOT_INDEX++;
+            indexToBeDeleted++;
         }
-        if(ROOT_INDEX == this->tree.size()){
+        if(indexToBeDeleted == this->tree.size()){
             return;
         }
 
         // Replace the root with the last element
-        this->tree.at(ROOT_INDEX) = this->tree.at(this->tree.size() - 1);
+        this->tree.at(indexToBeDeleted) = this->tree.at(this->tree.size() - 1);
         this->tree.pop_back();
 
         // Restore the heap property by heapifying down from the root
-        heapIndex parent = this->getParentPosition(ROOT_INDEX);
-        if(ROOT_INDEX < this->tree.size()){
+        heapIndex parent = this->getParentPosition(indexToBeDeleted);
+        if(indexToBeDeleted < this->tree.size()){
         this->heapifyDown(parent);
         }
         return;
