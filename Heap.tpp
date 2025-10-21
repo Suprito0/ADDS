@@ -198,7 +198,6 @@ public:
         }
 
         // Replace the root with the last element
-        T topElement = this->tree.at(ROOT_INDEX);
         this->tree.at(ROOT_INDEX) = this->tree.at(this->tree.size() - 1);
         this->tree.pop_back();
 
