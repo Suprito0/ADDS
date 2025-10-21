@@ -199,12 +199,9 @@ public:
 
         // Replace the root with the last element
         T topElement = this->tree.at(ROOT_INDEX);
-        std::cout << "Removed element: " << topElement << std::endl;
-        std::cout << "Placing index: " << (this->tree.size() - 1) << "(" << this->tree.at(this->tree.size() - 1) << ") to the top" << std::endl;
         this->tree.at(ROOT_INDEX) = this->tree.at(this->tree.size() - 1);
         this->tree.pop_back();
 
-        std::cout << "Checking the if the heap condition is valid after popping out top of heap: " << topElement << std::endl;
         // Restore the heap property by heapifying down from the root
         heapIndex parent = ROOT_INDEX;
         if(ROOT_INDEX < this->tree.size()){
