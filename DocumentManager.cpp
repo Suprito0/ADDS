@@ -1,5 +1,9 @@
 #include "DocumentManager.h"
 
+DocumentManager::DocumentManager(){
+
+}
+
 void DocumentManager::addDocument(string name, int id, int license_limit){
     this->docList.push_back(new Documents(name, id, license_limit));
 }
