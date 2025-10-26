@@ -25,7 +25,7 @@ bool DocumentManager::borrowDocument(int docid, int patronID) {
 
     if (foundDoc.borrowers.find(patronID) != foundDoc.borrowers.end()) return false;
 
-    if (foundDoc.borrowers.size() >= foundDoc.license_limit) return false;
+    if ((int)foundDoc.borrowers.size() >= foundDoc.license_limit) return false;
 
     foundDoc.borrowers.insert(patronID);
     return true;
