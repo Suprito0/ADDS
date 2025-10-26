@@ -1,45 +1,45 @@
 #include "DocumentManager.h"
+#include <utility>
 
-void DocumentManager::addDocument(const std::string& name, int id, int license_limit) {
-    if (license_limit < 0) license_limit = 0;
-
-    if (docs.find(id) != docs.end()) return;
-    if (nameToID.find(name) != nameToID.end()) return;
-
-    Document doc;
-    doc.name = name;
+void DocumentManager::addDocument(string name, int id, int license_limit) {
+    // Upsert by id.
+    auto& doc = docsById[id];
     doc.id = id;
     doc.license_limit = license_limit;
-
-    docs.emplace(id, move(doc));
-    nameToID.emplace(name, id);
+    // Bind name -> id via Trie (RB-tree children)
+    nameIndex.insert(name, id);
 }
 
 void DocumentManager::addPatron(int patronID) {
-    patrons.insert(patronID);
+    patrons.insert(patronID); // no-op if already present
 }
 
 int DocumentManager::search(string name) {
-    auto it = nameToID.find(name);
-    return (it == nameToID.end()) ? 0 : it->second;
+    // Trie exact lookup; returns 0 if not found (per spec)
+    return nameIndex.find(name);
 }
 
 bool DocumentManager::borrowDocument(int docid, int patronID) {
-    auto dit = docs.find(docid);
-    if (dit == docs.end()) return false;         
-    if (patrons.find(patronID) == patrons.end()) return false; 
+    // Validate patron exists.
+    if (patrons.find(patronID) == patrons.end()) return false;
 
-    Document& d = dit->second;
+    // Validate document exists.
+    auto it = docsById.find(docid);
+    if (it == docsById.end()) return false;
+    Document& d = it->second;
+
+    // Already holding it? (Disallow double-borrow by same patron.)
     if (d.borrowers.find(patronID) != d.borrowers.end()) return false;
 
-    if (static_cast<int>(d.borrowers.size()) >= d.license_limit) return false;
+    // Respect license limit
+    if ((int)d.borrowers.size() >= d.license_limit) return false;
 
     d.borrowers.insert(patronID);
     return true;
 }
 
 void DocumentManager::returnDocument(int docid, int patronID) {
-    auto dit = docs.find(docid);
-    if (dit == docs.end()) return; 
-    dit->second.borrowers.erase(patronID);
+    auto it = docsById.find(docid);
+    if (it == docsById.end()) return; // unknown doc => nothing to do
+    it->second.borrowers.erase(patronID);
 }
