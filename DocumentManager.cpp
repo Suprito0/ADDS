@@ -1,65 +1,45 @@
 #include "DocumentManager.h"
 
-DocumentManager::DocumentManager(){
+void DocumentManager::addDocument(const std::string& name, int id, int license_limit) {
+    if (license_limit < 0) license_limit = 0;
 
+    if (docs.find(id) != docs.end()) return;
+    if (nameToID.find(name) != nameToID.end()) return;
+
+    Document doc;
+    doc.name = name;
+    doc.id = id;
+    doc.license_limit = license_limit;
+
+    docs.emplace(id, move(doc));
+    nameToID.emplace(name, id);
 }
 
-void DocumentManager::addDocument(string name, int id, int license_limit){
-    this->docList.push_back(new Documents(name, id, license_limit));
+void DocumentManager::addPatron(int patronID) {
+    patrons.insert(patronID);
 }
-void DocumentManager::addPatron(int patronID){
-    this->listOfPatronID.push_back(patronID);
+
+int DocumentManager::search(string name) {
+    auto it = nameToID.find(name);
+    return (it == nameToID.end()) ? 0 : it->second;
 }
-int DocumentManager::search(string name){
-    for(Documents* doc : this->docList){
-        if(doc->name == name){
-            return doc->docid;
-        }
-    }
-    return 0;
-} // returns docid if name is in the document collection or 0 if the name is not in the collection
-bool DocumentManager::borrowDocument(int docid, int patronID){
-    bool found = false;
-    Documents* pickedDoc;
-    for(Documents* doc : this->docList){
-        if(doc->docid == docid){
-            pickedDoc = doc;
-            found = true;
-            break;
-        }
-    }
-    if(!found || pickedDoc->numOfPatronsWithAccess >= pickedDoc->limitOfPatrons){
-        return false;
-    }
-    pickedDoc->listOfPatronWithAccess.push_back(patronID);
-    pickedDoc->numOfPatronsWithAccess++;
+
+bool DocumentManager::borrowDocument(int docid, int patronID) {
+    auto dit = docs.find(docid);
+    if (dit == docs.end()) return false;         
+    if (patrons.find(patronID) == patrons.end()) return false; 
+
+    Document& d = dit->second;
+    if (d.borrowers.find(patronID) != d.borrowers.end()) return false;
+
+    if (static_cast<int>(d.borrowers.size()) >= d.license_limit) return false;
+
+    d.borrowers.insert(patronID);
     return true;
-}  // returns true if document is borrowed, false if it can not be borrowed (invalid patronid or the number of copies current borrowed has reached the license limit)
-void DocumentManager::returnDocument(int docid, int patronID){
-    bool found = false;
-    Documents* pickedDoc;
-    for(Documents* doc : this->docList){
-        if(doc->docid == docid){
-            pickedDoc = doc;
-            found = true;
-            break;
-        }
-    }
-    if(!found){
-        return;
-    }
-    found = false;
-    int index = 0;
-    for(int pID : pickedDoc->listOfPatronWithAccess){
-        if(pID == patronID){
-            found = true;
-            break;
-        }
-        index++;
-    }
-    if(!found){
-        return;
-    }
-    pickedDoc->listOfPatronWithAccess.erase(pickedDoc->listOfPatronWithAccess.begin() + index);
-    pickedDoc->numOfPatronsWithAccess--;
+}
+
+void DocumentManager::returnDocument(int docid, int patronID) {
+    auto dit = docs.find(docid);
+    if (dit == docs.end()) return; 
+    dit->second.borrowers.erase(patronID);
 }
